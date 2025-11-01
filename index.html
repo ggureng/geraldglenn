@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerald Glenn S. Galero - Resume</title>
+    <title>Gerald Glenn S. Galero - Professional Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Global Styles */
         * {
@@ -13,9 +14,19 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f9f9f9;
+            --dark: #333333;
+            --gray: #7f8c8d;
+            --light-gray: #ecf0f1;
+        }
+        
         body {
-            background-color: #0a0a0a;
-            color: #ffffff;
+            background-color: white;
+            color: var(--dark);
             line-height: 1.6;
         }
         
@@ -30,40 +41,40 @@
         }
         
         h1, h2, h3 {
-            color: #4a90e2;
+            color: var(--primary);
             margin-bottom: 15px;
         }
         
         h1 {
             font-size: 2.5rem;
-            border-bottom: 2px solid #4a90e2;
+            border-bottom: 2px solid var(--secondary);
             padding-bottom: 10px;
         }
         
         h2 {
             font-size: 1.8rem;
-            border-left: 4px solid #4a90e2;
+            border-left: 4px solid var(--secondary);
             padding-left: 10px;
         }
         
         h3 {
             font-size: 1.3rem;
-            color: #ffffff;
+            color: var(--primary);
         }
         
         p {
             margin-bottom: 10px;
+            color: var(--dark);
         }
         
         a {
-            color: #4a90e2;
+            color: var(--secondary);
             text-decoration: none;
             transition: color 0.3s;
         }
         
         a:hover {
-            color: #ffffff;
-            text-decoration: underline;
+            color: var(--accent);
         }
         
         ul {
@@ -79,16 +90,18 @@
         
         li:before {
             content: "▸";
-            color: #4a90e2;
+            color: var(--secondary);
             position: absolute;
             left: 0;
         }
         
         /* Header Styles */
         header {
-            background-color: #1a1a1a;
-            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 60px 0;
             margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         .header-content {
@@ -103,19 +116,23 @@
             min-width: 300px;
         }
         
+        .header-text h1 {
+            color: white;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
         .profile-image {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            background-color: #4a90e2;
+            background-color: var(--light-gray);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3rem;
-            color: #0a0a0a;
             margin-left: 20px;
             overflow: hidden;
-            border: 3px solid #4a90e2;
+            border: 5px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
         .profile-image img {
@@ -127,7 +144,8 @@
         .bio {
             font-style: italic;
             margin-top: 15px;
-            color: #cccccc;
+            color: var(--light-gray);
+            font-size: 1.1rem;
         }
         
         /* Contact Info */
@@ -142,11 +160,14 @@
             display: flex;
             align-items: center;
             margin-right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
         }
         
         .contact-item i {
             margin-right: 8px;
-            color: #4a90e2;
+            color: var(--secondary);
         }
         
         /* Grid Layout */
@@ -158,15 +179,17 @@
         
         /* Card Styles */
         .card {
-            background-color: #1a1a1a;
+            background-color: white;
             border-radius: 8px;
             padding: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
         
         /* Education & Work Experience */
@@ -183,7 +206,7 @@
             top: 5px;
             width: 10px;
             height: 10px;
-            background-color: #4a90e2;
+            background-color: var(--secondary);
             border-radius: 50%;
         }
         
@@ -194,7 +217,7 @@
             top: 15px;
             bottom: -25px;
             width: 2px;
-            background-color: #4a90e2;
+            background-color: var(--secondary);
         }
         
         .timeline-item:last-child:after {
@@ -202,9 +225,14 @@
         }
         
         .date {
-            color: #4a90e2;
+            color: var(--secondary);
             font-weight: bold;
             margin-bottom: 5px;
+            display: inline-block;
+            background: var(--light-gray);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
         }
         
         /* Skills & Languages */
@@ -216,23 +244,33 @@
         }
         
         .skill-item, .language-item {
-            background-color: #2a2a2a;
+            background-color: var(--light-gray);
+            color: var(--primary);
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .skill-item:hover, .language-item:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: scale(1.05);
         }
         
         /* Photo Upload Section */
         .photo-upload {
-            background-color: #1a1a1a;
+            background-color: white;
             border-radius: 8px;
             padding: 25px;
             margin-top: 20px;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent);
         }
         
         .upload-btn {
-            background-color: #4a90e2;
+            background-color: var(--secondary);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -240,20 +278,31 @@
             cursor: pointer;
             margin-top: 10px;
             transition: background-color 0.3s;
+            font-weight: 600;
         }
         
         .upload-btn:hover {
-            background-color: #3a7bc8;
+            background-color: var(--primary);
         }
         
         /* Footer */
         footer {
             text-align: center;
-            padding: 20px 0;
+            padding: 30px 0;
             margin-top: 40px;
-            border-top: 1px solid #2a2a2a;
-            color: #cccccc;
+            border-top: 1px solid var(--light-gray);
+            color: var(--gray);
             font-size: 0.9rem;
+            background: var(--light);
+        }
+        
+        /* Section Dividers */
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            width: 100px;
+            margin: 20px 0;
+            border-radius: 3px;
         }
         
         /* Responsive Design */
@@ -270,6 +319,10 @@
             .profile-image {
                 margin: 20px 0 0 0;
             }
+            
+            .contact-info {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -283,26 +336,26 @@
                     
                     <div class="contact-info">
                         <div class="contact-item">
-                            <i>📧</i>
+                            <i class="fas fa-envelope"></i>
                             <span>geraldglenngalero3@gmail.com</span>
                         </div>
                         <div class="contact-item">
-                            <i>📱</i>
+                            <i class="fas fa-phone"></i>
                             <span>09927538466</span>
                         </div>
                         <div class="contact-item">
-                            <i>📍</i>
+                            <i class="fas fa-map-marker-alt"></i>
                             <span>San Juan City, Metro Manila</span>
                         </div>
                         <div class="contact-item">
-                            <i>🔗</i>
-                            <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" target="_blank">LinkedIn Profile</a>
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" target="_blank">LinkedIn</a>
                         </div>
                     </div>
                 </div>
                 <div class="profile-image">
                     <!-- Replace the text below with your actual image -->
-                    <img src="https://via.placeholder.com/150" alt="Gerald Glenn S. Galero" id="profile-pic">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Gerald Glenn S. Galero" id="profile-pic">
                     <!-- If you have a local image, use: <img src="profile.jpg" alt="Gerald Glenn S. Galero" id="profile-pic"> -->
                 </div>
             </div>
@@ -311,7 +364,7 @@
 
     <div class="container">
         <div class="photo-upload">
-            <h2>Upload Your Profile Photo</h2>
+            <h2><i class="fas fa-camera"></i> Upload Your Profile Photo</h2>
             <p>Select an image file to use as your profile picture</p>
             <input type="file" id="photo-upload" accept="image/*">
             <button class="upload-btn" onclick="uploadPhoto()">Upload Photo</button>
@@ -320,12 +373,13 @@
         <div class="grid-container">
             <div class="left-column">
                 <section class="work-experience">
-                    <h2>Work Experience</h2>
+                    <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                    <div class="section-divider"></div>
                     <div class="card">
                         <div class="timeline-item">
                             <h3>Customer Support</h3>
-                            <p class="date">2024 - Current</p>
-                            <p>HUBBY eSIM | Amsterdam, Noord Holland</p>
+                            <span class="date">2024 - Current</span>
+                            <p><strong>HUBBY eSIM | Amsterdam, Noord Holland</strong></p>
                             <ul>
                                 <li>Providing technical support and assistance to customers</li>
                                 <li>Troubleshooting eSIM connectivity issues</li>
@@ -335,8 +389,8 @@
                         
                         <div class="timeline-item">
                             <h3>Service Crew</h3>
-                            <p class="date">2023 - 2024</p>
-                            <p>McDonald's P. Guevarra | Golden Arches Development Corporation (GADC)</p>
+                            <span class="date">2023 - 2024</span>
+                            <p><strong>McDonald's P. Guevarra | Golden Arches Development Corporation (GADC)</strong></p>
                             <ul>
                                 <li>Provided excellent customer service in a fast-paced environment</li>
                                 <li>Handled cash transactions and maintained cleanliness standards</li>
@@ -347,31 +401,32 @@
                 </section>
                 
                 <section class="education">
-                    <h2>Education</h2>
+                    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                    <div class="section-divider"></div>
                     <div class="card">
                         <div class="timeline-item">
                             <h3>Bachelor of Science in Information Technology</h3>
-                            <p class="date">Current</p>
-                            <p>Polytechnic University of the Philippines - San Juan Campus</p>
+                            <span class="date">Current</span>
+                            <p><strong>Polytechnic University of the Philippines - San Juan Campus</strong></p>
                             <p>223 Ortega, San Juan City, Metro Manila</p>
                         </div>
                         
                         <div class="timeline-item">
                             <h3>General Academic Strand</h3>
-                            <p class="date">Senior High School</p>
-                            <p>San Juan Academic Senior-High School</p>
+                            <span class="date">Senior High School</span>
+                            <p><strong>San Juan Academic Senior-High School</strong></p>
                             <p>86-98 A. Luna, Manila, Metro Manila</p>
                         </div>
                         
                         <div class="timeline-item">
                             <h3>High School</h3>
-                            <p>Jose Abad Santos High School</p>
+                            <p><strong>Jose Abad Santos High School</strong></p>
                             <p>Numancia St, San Nicolas, Manila, Metro Manila</p>
                         </div>
                         
                         <div class="timeline-item">
                             <h3>Elementary</h3>
-                            <p>Coronon Elementary School</p>
+                            <p><strong>Coronon Elementary School</strong></p>
                             <p>Purok Dahlia, Coronon, Sta. Cruz, Davao</p>
                         </div>
                     </div>
@@ -380,7 +435,8 @@
             
             <div class="right-column">
                 <section class="skills">
-                    <h2>Skills</h2>
+                    <h2><i class="fas fa-tools"></i> Skills</h2>
+                    <div class="section-divider"></div>
                     <div class="card">
                         <div class="skills-list">
                             <span class="skill-item">Programming</span>
@@ -389,23 +445,27 @@
                             <span class="skill-item">Customer Support</span>
                             <span class="skill-item">Problem Solving</span>
                             <span class="skill-item">Communication</span>
+                            <span class="skill-item">Technical Support</span>
+                            <span class="skill-item">Fast Learning</span>
                         </div>
                     </div>
                 </section>
                 
                 <section class="languages">
-                    <h2>Languages</h2>
+                    <h2><i class="fas fa-language"></i> Languages</h2>
+                    <div class="section-divider"></div>
                     <div class="card">
                         <div class="languages-list">
                             <span class="language-item">Filipino (Fluent)</span>
-                            <span class="language-item">English (Basics)</span>
+                            <span class="language-item">English (Intermediate)</span>
                             <span class="language-item">German (Basics)</span>
                         </div>
                     </div>
                 </section>
                 
                 <section class="hobbies">
-                    <h2>Hobbies & Interests</h2>
+                    <h2><i class="fas fa-heart"></i> Hobbies & Interests</h2>
+                    <div class="section-divider"></div>
                     <div class="card">
                         <ul>
                             <li>Playing Badminton</li>
@@ -418,7 +478,8 @@
                 </section>
                 
                 <section class="personal-info">
-                    <h2>Personal Information</h2>
+                    <h2><i class="fas fa-user"></i> Personal Information</h2>
+                    <div class="section-divider"></div>
                     <div class="card">
                         <ul>
                             <li><strong>Age:</strong> 21</li>
@@ -434,6 +495,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2024 Gerald Glenn S. Galero. All rights reserved.</p>
+            <p>Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for a professional presentation</p>
         </div>
     </footer>
 
