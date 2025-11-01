@@ -114,6 +114,14 @@
             font-size: 3rem;
             color: #0a0a0a;
             margin-left: 20px;
+            overflow: hidden;
+            border: 3px solid #4a90e2;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .bio {
@@ -214,6 +222,30 @@
             font-size: 0.9rem;
         }
         
+        /* Photo Upload Section */
+        .photo-upload {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .upload-btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .upload-btn:hover {
+            background-color: #3a7bc8;
+        }
+        
         /* Footer */
         footer {
             text-align: center;
@@ -269,13 +301,22 @@
                     </div>
                 </div>
                 <div class="profile-image">
-                    GG
+                    <!-- Replace the text below with your actual image -->
+                    <img src="https://via.placeholder.com/150" alt="Gerald Glenn S. Galero" id="profile-pic">
+                    <!-- If you have a local image, use: <img src="profile.jpg" alt="Gerald Glenn S. Galero" id="profile-pic"> -->
                 </div>
             </div>
         </div>
     </header>
 
     <div class="container">
+        <div class="photo-upload">
+            <h2>Upload Your Profile Photo</h2>
+            <p>Select an image file to use as your profile picture</p>
+            <input type="file" id="photo-upload" accept="image/*">
+            <button class="upload-btn" onclick="uploadPhoto()">Upload Photo</button>
+        </div>
+        
         <div class="grid-container">
             <div class="left-column">
                 <section class="work-experience">
@@ -395,5 +436,35 @@
             <p>&copy; 2024 Gerald Glenn S. Galero. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Function to handle photo upload
+        function uploadPhoto() {
+            const fileInput = document.getElementById('photo-upload');
+            const profilePic = document.getElementById('profile-pic');
+            
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    profilePic.src = e.target.result;
+                    // Store the image in localStorage so it persists on page refresh
+                    localStorage.setItem('profilePhoto', e.target.result);
+                }
+                
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                alert('Please select an image file first.');
+            }
+        }
+        
+        // Check if there's a saved profile photo in localStorage
+        window.onload = function() {
+            const savedPhoto = localStorage.getItem('profilePhoto');
+            if (savedPhoto) {
+                document.getElementById('profile-pic').src = savedPhoto;
+            }
+        }
+    </script>
 </body>
 </html>
