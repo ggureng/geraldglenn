@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Gerald Glenn Galero</title>
+    <meta name="description" content="Personal narrative and background of Gerald Glenn Galero.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❯</text></svg>">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="index.html" class="logo">Gerald<span>.</span></a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    ☰
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link active">About</a></li>
+                    <li><a href="agenda.html" class="nav-link">Agenda</a></li>
+                    <li><a href="journey.html" class="nav-link">Journey</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero section">
+                <div class="container">
+                    <div class="hero-content fade-in">
+                        <h1 class="hero-statement">
+                            From curiosity to <span class="accent">purpose</span>.
+                        </h1>
+                        
+                        <p class="lead">
+                            This is not a traditional résumé. It's a reflection on growth, learning, and the journey in technology.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Content -->
+            <section class="section">
+                <div class="container">
+                    <div class="card fade-in">
+                        <h2 class="mb-4">The foundation</h2>
+                        <p>
+                            My journey began with an innate curiosity about how things work. Growing up in a world increasingly shaped by technology, I was fascinated by the systems that power our daily lives. This curiosity led me to pursue Information Technology at the Polytechnic University of the Philippines, where I began formalizing my understanding of systems, networks, and security.
+                        </p>
+                        <p>
+                            What excites me about technology is its potential to solve real human problems. Whether it's securing data from threats or building systems that help people work more efficiently, I believe technology should serve as an enabler rather than a complication.
+                        </p>
+                    </div>
+                    
+                    <div class="card fade-in mt-5">
+                        <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                            <div>
+                                <h3 class="mb-3">Skills & Languages</h3>
+                                <div class="skills-list">
+                                    <span class="skill-item">Cybersecurity</span>
+                                    <span class="skill-item">Technical Support</span>
+                                    <span class="skill-item">Problem Solving</span>
+                                    <span class="skill-item">Teamwork</span>
+                                    <span class="skill-item">Communication</span>
+                                    <span class="skill-item">Fast Learning</span>
+                                </div>
+                                
+                                <h4 class="mt-4 mb-3">Languages</h4>
+                                <div class="languages-list">
+                                    <span class="language-item">Filipino (Fluent)</span>
+                                    <span class="language-item">English (Intermediate)</span>
+                                    <span class="language-item">German (Basics)</span>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="mb-3">Beyond Technology</h3>
+                                <p>My interests extend beyond the digital realm:</p>
+                                <ul>
+                                    <li>Playing Badminton for focus and discipline</li>
+                                    <li>Riding Motorcycles for exploration</li>
+                                    <li>Playing Video/Mobile Games for strategic thinking</li>
+                                    <li>Continuous learning in cybersecurity</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in mt-5">
+                        <h2 class="mb-4">Photo</h2>
+                        <div class="photo-upload-container">
+                            <div class="profile-image-container" style="max-width: 300px; margin: 0 auto;">
+                                <div class="profile-image" style="width: 200px; height: 200px; margin: 0 auto; border-radius: 50%; overflow: hidden; background-color: var(--bg-secondary); border: 3px solid var(--accent-color);">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Gerald Glenn Galero" id="profile-pic" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 2rem;">
+                                <h3 class="mb-3"><i class="fas fa-camera"></i> Upload Your Profile Photo</h3>
+                                <p style="margin-bottom: 1rem;">Select an image file to use as your profile picture</p>
+                                <input type="file" id="photo-upload" accept="image/*" style="margin-bottom: 1rem;">
+                                <button class="btn btn-secondary" onclick="uploadPhoto()">Upload Photo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <a href="index.html" class="logo">Gerald<span>.</span></a>
+                        <p class="small-text mt-2">IT Professional focused on cybersecurity & intentional creation.</p>
+                    </div>
+                    
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About</a></li>
+                        <li><a href="agenda.html" class="footer-link">Agenda</a></li>
+                        <li><a href="journey.html" class="footer-link">Journey</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:geraldglenngalero3@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                    
+                    <p class="copyright">
+                        &copy; <span id="currentYear"></span> Gerald Glenn Galero. All thoughts my own.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Function to handle photo upload
+        function uploadPhoto() {
+            const fileInput = document.getElementById('photo-upload');
+            const profilePic = document.getElementById('profile-pic');
+            
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    profilePic.src = e.target.result;
+                    // Store the image in localStorage so it persists on page refresh
+                    localStorage.setItem('profilePhoto', e.target.result);
+                }
+                
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                alert('Please select an image file first.');
+            }
+        }
+        
+        // Check if there's a saved profile photo in localStorage
+        window.onload = function() {
+            const savedPhoto = localStorage.getItem('profilePhoto');
+            if (savedPhoto) {
+                document.getElementById('profile-pic').src = savedPhoto;
+            }
+        }
+    </script>
+</body>
+</html>
