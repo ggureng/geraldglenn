@@ -3,127 +3,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerald Glenn Galero | Programmer & IT Professional</title>
+    <title>Gerald Glenn Galero | IT Professional</title>
     <meta name="description" content="Personal website of Gerald Glenn Galero, an IT professional focused on cybersecurity and intentional technology.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- CSS - CORRECTED PATH -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❯</text></svg>">
+    <!-- ALL CSS INLINE -->
+    <style>
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #2c2c2e;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #4dabf7;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: #a1a1a6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: #4dabf7;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        
+        .hero-statement {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        .hero-statement .accent {
+            color: #4dabf7;
+        }
+        
+        .hero-intro {
+            font-size: 1.25rem;
+            color: #a1a1a6;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+        
+        /* ===== BUTTONS ===== */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #4dabf7;
+            color: #0a0a0a;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: #74c0fc;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #4dabf7;
+            border: 2px solid #4dabf7;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(77, 171, 247, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== CARDS ===== */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background: #151515;
+            border: 1px solid #2c2c2e;
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card i {
+            font-size: 2.5rem;
+            color: #4dabf7;
+            margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .card p {
+            color: #a1a1a6;
+            line-height: 1.6;
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #151515;
+            border-top: 1px solid #2c2c2e;
+            padding: 50px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        
+        .footer-link {
+            color: #a1a1a6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: #4dabf7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: #2c2c2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: #4dabf7;
+            color: #0a0a0a;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            color: #6e6e73;
+            font-size: 0.875rem;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #0a0a0a;
+                flex-direction: column;
+                padding: 20px;
+                border-top: 1px solid #2c2c2e;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .hero-statement {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
+            }
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
 </head>
 <body>
-    <div class="page-wrapper">
-        <!-- Navigation -->
-        <nav class="navbar">
-            <div class="container nav-container">
-                <a href="index.html" class="logo">Gerald<span>.</span></a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Gerald<span>.</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="fade-in">
+                <h1 class="hero-statement">
+                    Securing systems,<br>
+                    <span class="accent">building</span> with intention.
+                </h1>
                 
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-                    ☰
-                </button>
+                <p class="hero-intro">
+                    I'm an IT professional focused on cybersecurity, innovative solutions, and creating technology that empowers rather than complicates. Through continuous learning and mindful creation, I explore the intersection of security, usability, and human-centered design.
+                </p>
                 
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="agenda.html" class="nav-link">Agenda</a></li>
-                    <li><a href="journey.html" class="nav-link">Journey</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
+                <div class="btn-group">
+                    <a href="#about" class="btn btn-primary">Discover my story</a>
+                    <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                </div>
             </div>
-        </nav>
+        </div>
+    </section>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Hero Section -->
-            <section class="hero section">
-                <div class="container">
-                    <div class="hero-content fade-in">
-                        <h1 class="hero-statement">
-                            Securing systems,<br>
-                            <span class="accent">building</span> with intention.
-                        </h1>
-                        
-                        <p class="hero-intro">
-                            I'm an IT professional focused on cybersecurity, innovative solutions, and creating technology that empowers rather than complicates. Through continuous learning and mindful creation, I explore the intersection of security, usability, and human-centered design.
+    <!-- About Section -->
+    <section class="section" id="about" style="background: #0f0f0f;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>About Me</h2>
+                <p style="color: #a1a1a6; max-width: 600px; margin: 0 auto;">Aspiring IT professional with a passion for technology, cybersecurity, and creating innovative solutions.</p>
+            </div>
+            
+            <div class="grid-container">
+                <div class="card fade-in delay-1">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Education</h3>
+                    <p>Bachelor of Science in Information Technology at Polytechnic University of the Philippines - San Juan Campus. Currently developing foundational knowledge in systems, networks, and cybersecurity.</p>
+                </div>
+                
+                <div class="card fade-in delay-2">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Experience</h3>
+                    <p>Customer Support at HUBBY eSIM, providing technical support and troubleshooting. Previously worked as Service Crew at McDonald's, developing teamwork and customer service skills.</p>
+                </div>
+                
+                <div class="card fade-in delay-3">
+                    <i class="fas fa-heart"></i>
+                    <h3>Interests</h3>
+                    <p>Cybersecurity research, playing badminton, riding motorcycles, exploring new technologies, and continuous learning in the ever-evolving tech landscape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Skills & Expertise</h2>
+            </div>
+            
+            <div class="grid-container">
+                <div class="card fade-in delay-1">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cybersecurity</h3>
+                    <p>Focus on protecting digital infrastructure through proactive security measures and threat analysis.</p>
+                </div>
+                
+                <div class="card fade-in delay-2">
+                    <i class="fas fa-code"></i>
+                    <h3>Problem Solving</h3>
+                    <p>Creating elegant solutions to complex technical challenges with an emphasis on clarity.</p>
+                </div>
+                
+                <div class="card fade-in delay-3">
+                    <i class="fas fa-users"></i>
+                    <h3>Communication</h3>
+                    <p>Strong teamwork and communication skills developed through customer-facing roles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact" style="background: #0f0f0f;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Get In Touch</h2>
+                <p style="color: #a1a1a6;">I'm open to discussions about technology, security, and potential opportunities.</p>
+            </div>
+            
+            <div class="grid-container">
+                <div class="card fade-in delay-1">
+                    <h3>Contact Information</h3>
+                    <div style="margin-top: 20px;">
+                        <p style="margin: 15px 0;">
+                            <i class="fas fa-envelope" style="color: #4dabf7; margin-right: 10px;"></i>
+                            <a href="mailto:geraldglenngalero3@gmail.com" style="color: #fff; text-decoration: none;">geraldglenngalero3@gmail.com</a>
                         </p>
-                        
-                        <div class="btn-group stagger-delay">
-                            <a href="about.html" class="btn btn-primary">Discover my story</a>
-                            <a href="agenda.html" class="btn btn-secondary">View my principles</a>
-                        </div>
+                        <p style="margin: 15px 0;">
+                            <i class="fas fa-phone" style="color: #4dabf7; margin-right: 10px;"></i>
+                            <span>09927538466</span>
+                        </p>
+                        <p style="margin: 15px 0;">
+                            <i class="fas fa-map-marker-alt" style="color: #4dabf7; margin-right: 10px;"></i>
+                            <span>San Juan City, Metro Manila</span>
+                        </p>
                     </div>
                 </div>
-            </section>
-
-            <!-- Philosophy Preview -->
-            <section class="section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2>Core Focus Areas</h2>
-                    </div>
-                    
-                    <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                        <div class="card fade-in">
-                            <div class="mb-3" style="font-size: 2rem; color: #4dabf7;">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h3 class="mb-3">Cybersecurity</h3>
-                            <p>
-                                Protecting digital infrastructure through proactive security measures, threat analysis, and secure system design.
-                            </p>
-                        </div>
-                        
-                        <div class="card fade-in">
-                            <div class="mb-3" style="font-size: 2rem; color: #4dabf7;">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3 class="mb-3">Problem Solving</h3>
-                            <p>
-                                Creating elegant solutions to complex technical challenges, with an emphasis on clarity and maintainability.
-                            </p>
-                        </div>
-                        
-                        <div class="card fade-in">
-                            <div class="mb-3" style="font-size: 2rem; color: #4dabf7;">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3 class="mb-3">User-Centric Design</h3>
-                            <p>
-                                Building technology that serves human needs, focusing on usability and accessibility for diverse users.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div>
-                        <a href="index.html" class="logo">Gerald<span>.</span></a>
-                        <p class="small-text mt-2">IT Professional focused on cybersecurity & intentional creation.</p>
-                    </div>
-                    
-                    <ul class="footer-links">
-                        <li><a href="index.html" class="footer-link">Home</a></li>
-                        <li><a href="about.html" class="footer-link">About</a></li>
-                        <li><a href="agenda.html" class="footer-link">Agenda</a></li>
-                        <li><a href="journey.html" class="footer-link">Journey</a></li>
-                        <li><a href="contact.html" class="footer-link">Contact</a></li>
-                    </ul>
-                    
-                    <div class="social-links">
+                
+                <div class="card fade-in delay-2">
+                    <h3>Connect With Me</h3>
+                    <p style="margin: 20px 0;">Feel free to reach out for collaborations or just to say hello!</p>
+                    <div class="social-links" style="justify-content: center; margin-top: 30px;">
                         <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="social-link" target="_blank">
                             <i class="fab fa-linkedin"></i>
                         </a>
@@ -131,16 +463,100 @@
                             <i class="fas fa-envelope"></i>
                         </a>
                     </div>
-                    
-                    <p class="copyright">
-                        &copy; <span id="currentYear"></span> Gerald Glenn Galero. All thoughts my own.
-                    </p>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </section>
 
-    <!-- JavaScript - CORRECTED PATH -->
-    <script src="main.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="logo">Gerald<span>.</span></a>
+                    <p style="color: #a1a1a6; margin-top: 10px; font-size: 0.9rem;">IT Professional focused on cybersecurity & intentional creation.</p>
+                </div>
+                
+                <ul class="footer-links">
+                    <li><a href="#about" class="footer-link">About</a></li>
+                    <li><a href="#skills" class="footer-link">Skills</a></li>
+                    <li><a href="#contact" class="footer-link">Contact</a></li>
+                </ul>
+                
+                <p class="copyright">
+                    &copy; 2024 Gerald Glenn Galero. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ALL JAVASCRIPT INLINE -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                    
+                    // Smooth scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Set active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Fade-in animations on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
