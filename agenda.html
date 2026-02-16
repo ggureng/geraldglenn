@@ -1,57 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agenda | Gerald Glenn Galero</title>
-  <meta name="description" content="Guiding principles and long‑term vision.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda | Gerald Glenn Galero</title>
+    <meta name="description" content="Core values and guiding principles of Gerald Glenn Galero.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❯</text></svg>">
 </head>
 <body>
-  <nav class="navbar">...</nav> <!-- same as about.html, with active on agenda.html -->
+    <div class="page-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="index.html" class="logo">Gerald<span>.</span></a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    ☰
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="agenda.html" class="nav-link active">Agenda</a></li>
+                    <li><a href="journey.html" class="nav-link">Journey</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
 
-  <main class="main-content">
-    <section class="section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>My Agenda</h2>
-          <p>The values that guide my work and growth.</p>
-        </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero section">
+                <div class="container">
+                    <div class="hero-content fade-in">
+                        <h1 class="hero-statement">
+                            Guiding <span class="accent">principles</span>.
+                        </h1>
+                        
+                        <p class="lead">
+                            The values and intentions that shape my approach to technology and professional growth.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-        <div class="grid">
-          <div class="card fade-in">
-            <i class="fas fa-shield-alt card-icon"></i>
-            <h3>Security First</h3>
-            <p>Protecting data and systems is an ethical responsibility, not just a technical requirement.</p>
-          </div>
-          <div class="card fade-in">
-            <i class="fas fa-graduation-cap card-icon"></i>
-            <h3>Continuous Learning</h3>
-            <p>Technology evolves constantly. Staying curious is essential.</p>
-          </div>
-          <div class="card fade-in">
-            <i class="fas fa-users card-icon"></i>
-            <h3>Human‑Centered</h3>
-            <p>Technology should empower people, not complicate their lives.</p>
-          </div>
-        </div>
+            <!-- Agenda Content -->
+            <section class="section">
+                <div class="container">
+                    <div class="card fade-in">
+                        <h2 class="mb-4">Core Values</h2>
+                        <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                            <div>
+                                <div class="mb-3" style="font-size: 1.5rem; color: var(--accent-color);">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3 class="mb-3">Security First</h3>
+                                <p>Protecting data and systems isn't just a technical requirement—it's an ethical responsibility to users and organizations.</p>
+                            </div>
+                            
+                            <div>
+                                <div class="mb-3" style="font-size: 1.5rem; color: var(--accent-color);">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="mb-3">Continuous Learning</h3>
+                                <p>Technology evolves constantly. Staying curious and committed to learning is essential for meaningful contribution.</p>
+                            </div>
+                            
+                            <div>
+                                <div class="mb-3" style="font-size: 1.5rem; color: var(--accent-color);">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3 class="mb-3">Human-Centered</h3>
+                                <p>Technology should serve people, not the other way around. Solutions must be accessible, intuitive, and empowering.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in mt-5">
+                        <h2 class="mb-4">Long-term Vision</h2>
+                        <p>
+                            I envision a career where technology and security work hand-in-hand to create safer, more efficient digital environments. My focus is on developing expertise in cybersecurity while maintaining a broad understanding of how systems interconnect.
+                        </p>
+                        <p>
+                            Beyond technical skills, I aim to contribute to communities—whether through mentorship, knowledge sharing, or building tools that address genuine needs. The goal is not just personal advancement, but meaningful impact.
+                        </p>
+                        <div class="mt-4">
+                            <a href="journey.html" class="btn btn-secondary">View my journey</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in mt-5">
+                        <h2 class="mb-4">Principles in Practice</h2>
+                        <div class="principles-list">
+                            <div class="principle-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                                <h3 class="mb-2">1. Start with fundamentals</h3>
+                                <p>Strong understanding of core concepts enables adaptation to new technologies and challenges.</p>
+                            </div>
+                            
+                            <div class="principle-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+                                <h3 class="mb-2">2. Security by design</h3>
+                                <p>Incorporate security considerations from the beginning, not as an afterthought.</p>
+                            </div>
+                            
+                            <div class="principle-item">
+                                <h3 class="mb-2">3. Clarity over cleverness</h3>
+                                <p>Simple, understandable solutions are more maintainable and secure than complex ones.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-        <div class="card fade-in" style="margin-top: var(--space-lg);">
-          <h3>Long‑Term Vision</h3>
-          <p>I aim to contribute to cybersecurity while building tools that address genuine needs – not just for personal advancement, but for meaningful impact.</p>
-          <div class="btn-group" style="margin-top: var(--space-md);">
-            <a href="journey.html" class="btn btn-secondary">View my journey</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <a href="index.html" class="logo">Gerald<span>.</span></a>
+                        <p class="small-text mt-2">IT Professional focused on cybersecurity & intentional creation.</p>
+                    </div>
+                    
+                    <ul class="footer-links">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="about.html" class="footer-link">About</a></li>
+                        <li><a href="agenda.html" class="footer-link">Agenda</a></li>
+                        <li><a href="journey.html" class="footer-link">Journey</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:geraldglenngalero3@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                    
+                    <p class="copyright">
+                        &copy; <span id="currentYear"></span> Gerald Glenn Galero. All thoughts my own.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
-  <footer class="footer">...</footer>
-  <script src="main.js"></script>
+    <!-- JavaScript -->
+    <script src="main.js"></script>
 </body>
 </html>
