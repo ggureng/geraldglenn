@@ -14,6 +14,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❯</text></svg>">
+    
     <style>
         /* ===== VARIABLES ===== */
         :root {
@@ -26,6 +29,7 @@
             --accent-color: #4dabf7;
             --accent-hover: #74c0fc;
             --border-color: #2c2c2e;
+            --linkedin-blue: #0077b5;
         }
         
         /* ===== RESET & BASE ===== */
@@ -46,6 +50,77 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        /* ===== FLOATING LINKEDIN BUTTON ===== */
+        .floating-linkedin {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        
+        .linkedin-tooltip {
+            background: var(--linkedin-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            pointer-events: none;
+            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.4);
+        }
+        
+        .floating-linkedin:hover .linkedin-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .linkedin-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--linkedin-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 119, 181, 0.5);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 20px rgba(0, 119, 181, 0.5);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(0, 119, 181, 0.8), 0 0 0 10px rgba(0, 119, 181, 0.1);
+            }
+        }
+        
+        .linkedin-btn:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 6px 30px rgba(0, 119, 181, 0.7);
+            animation: none;
+        }
+        
+        .linkedin-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .linkedin-btn:hover i {
+            transform: scale(1.2);
         }
         
         /* ===== NAVBAR ===== */
@@ -82,6 +157,7 @@
             display: flex;
             gap: 30px;
             list-style: none;
+            align-items: center;
         }
         
         .nav-link {
@@ -106,6 +182,32 @@
         
         .nav-link:hover, .nav-link.active { color: var(--accent-color); }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        
+        /* LinkedIn button in navbar */
+        .nav-linkedin-btn {
+            background: var(--linkedin-blue);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 119, 181, 0.3);
+        }
+        
+        .nav-linkedin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.5);
+            background: #006399;
+        }
+        
+        .nav-linkedin-btn i {
+            font-size: 1.1rem;
+        }
         
         .mobile-menu-btn {
             display: none;
@@ -152,6 +254,68 @@
             max-width: 700px;
             margin-bottom: 40px;
             line-height: 1.8;
+        }
+        
+        /* ===== LINKEDIN CTA BANNER ===== */
+        .linkedin-banner {
+            background: linear-gradient(135deg, var(--linkedin-blue) 0%, #005582 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 30px rgba(0, 119, 181, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .linkedin-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 119, 181, 0.4);
+        }
+        
+        .linkedin-banner-content {
+            flex: 1;
+        }
+        
+        .linkedin-banner-content h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .linkedin-banner-content h3 i {
+            font-size: 1.8rem;
+        }
+        
+        .linkedin-banner-content p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .linkedin-banner-btn {
+            background: white;
+            color: var(--linkedin-blue);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .linkedin-banner-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
         
         /* ===== BUTTONS ===== */
@@ -527,7 +691,7 @@
         /* ===== SCROLL TO TOP ===== */
         .scroll-to-top {
             position: fixed;
-            bottom: 30px;
+            bottom: 110px;
             right: 30px;
             width: 50px;
             height: 50px;
@@ -658,6 +822,10 @@
             transform: translateY(-4px);
         }
         
+        .social-link.linkedin:hover {
+            background: var(--linkedin-blue);
+        }
+        
         .copyright {
             color: var(--text-tertiary);
             font-size: 0.9rem;
@@ -689,6 +857,18 @@
         .delay-3 { animation-delay: 0.6s; }
         
         /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .linkedin-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .linkedin-banner-content h3 {
+                justify-content: center;
+            }
+        }
+        
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
             
@@ -706,6 +886,11 @@
             }
             
             .nav-links.active { display: flex; }
+            
+            .nav-linkedin-btn {
+                width: 100%;
+                justify-content: center;
+            }
             
             .section { padding: 60px 0; min-height: auto; }
             
@@ -735,10 +920,33 @@
                 flex-direction: column;
                 gap: 15px;
             }
+            
+            .floating-linkedin {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .linkedin-btn {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .scroll-to-top {
+                bottom: 95px;
+                right: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Floating LinkedIn Button -->
+    <div class="floating-linkedin">
+        <span class="linkedin-tooltip">Connect on LinkedIn!</span>
+        <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="linkedin-btn" target="_blank" rel="noopener noreferrer" title="Connect with me on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -755,6 +963,12 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#journey" class="nav-link">Journey</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="nav-linkedin-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -770,12 +984,27 @@
                 </h1>
                 
                 <p class="hero-intro">
-                    I’m an IT professional focused on programming, innovative solutions, and creating technology that empowers rather than complicates. Through continuous learning and mindful creation, I explore the intersection of security, usability, and human-centered design.
+                    I'm an IT professional focused on programming, innovative solutions, and creating technology that empowers rather than complicates. Through continuous learning and mindful creation, I explore the intersection of security, usability, and human-centered design.
                 </p>
                 
                 <div class="btn-group">
                     <a href="#about" class="btn btn-primary">Discover my story</a>
                     <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                </div>
+                
+                <!-- LinkedIn CTA Banner -->
+                <div class="linkedin-banner">
+                    <div class="linkedin-banner-content">
+                        <h3>
+                            <i class="fab fa-linkedin"></i>
+                            Let's Connect Professionally
+                        </h3>
+                        <p>View my full professional profile and connect with me on LinkedIn</p>
+                    </div>
+                    <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="linkedin-banner-btn" target="_blank" rel="noopener noreferrer">
+                        View LinkedIn Profile
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -826,7 +1055,7 @@
                     <div class="card fade-in delay-1">
                         <i class="fas fa-shield-alt card-icon"></i>
                         <h3>Computer Literacy</h3>
-                        <p>Strong foundation in computer literacy and everyday digital skills, enabling efficient and confident use of common productivity tools..</p>
+                        <p>Strong foundation in computer literacy and everyday digital skills, enabling efficient and confident use of common productivity tools.</p>
                         <div class="skills-grid">
                             <span class="skill-tag">Microsoft Word, Excel, PowerPoint</span>
                             <span class="skill-tag">Canva</span>
@@ -1092,6 +1321,16 @@
                                     <span>San Juan City, Metro Manila</span>
                                 </div>
                             </div>
+                            
+                            <div class="contact-item" style="border: 2px solid var(--linkedin-blue); background: rgba(0, 119, 181, 0.05);">
+                                <div class="contact-icon" style="background: var(--linkedin-blue); color: white;">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4 style="color: var(--linkedin-blue);">LinkedIn Profile</h4>
+                                    <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" target="_blank" rel="noopener noreferrer" style="color: var(--linkedin-blue); font-weight: 600;">gerald-glenn-galero</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -1111,13 +1350,13 @@
                         </form>
                         <div id="formMessage"></div>
                         <div class="social-links" style="justify-content: center; margin-top: 30px;">
-                            <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="social-link" target="_blank" title="LinkedIn">
+                            <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="social-link linkedin" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                             <a href="mailto:geraldglenngalero3@gmail.com" class="social-link" title="Email">
                                 <i class="fas fa-envelope"></i>
                             </a>
-                            <a href="https://github.com" class="social-link" target="_blank" title="GitHub">
+                            <a href="https://github.com" class="social-link" target="_blank" rel="noopener noreferrer" title="GitHub">
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
@@ -1170,7 +1409,7 @@
         });
         
         // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-link').forEach(link => {
+        document.querySelectorAll('.nav-link, .nav-linkedin-btn').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
@@ -1329,3 +1568,5 @@
             }
         });
     </script>
+</body>
+</html>
