@@ -1,300 +1,1780 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerald Glenn Galero – IT Professional</title>
-  <meta name="description" content="Portfolio of Gerald Glenn Galero, IT student focused on cybersecurity and human‑centered technology.">
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❯</text></svg>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerald Glenn Galero | IT Professional</title>
+    <meta name="description" content="Personal website of Gerald Glenn Galero, an IT professional focused on cybersecurity and intentional technology.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❯</text></svg>">
+    
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #151515;
+            --bg-tertiary: #1e1e1e;
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --text-tertiary: #6e6e73;
+            --accent-color: #4dabf7;
+            --accent-hover: #74c0fc;
+            --border-color: #2c2c2e;
+            --linkedin-blue: #0077b5;
+        }
+        
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { font-size: 16px; scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== FLOATING LINKEDIN BUTTON ===== */
+        .floating-linkedin {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        
+        .linkedin-tooltip {
+            background: var(--linkedin-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            pointer-events: none;
+            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.4);
+        }
+        
+        .floating-linkedin:hover .linkedin-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .linkedin-btn {
+            width: 60px;
+            height: 60px;
+            background: var(--linkedin-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 119, 181, 0.5);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 20px rgba(0, 119, 181, 0.5);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(0, 119, 181, 0.8), 0 0 0 10px rgba(0, 119, 181, 0.1);
+            }
+        }
+        
+        .linkedin-btn:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 6px 30px rgba(0, 119, 181, 0.7);
+            animation: none;
+        }
+        
+        .linkedin-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .linkedin-btn:hover i {
+            transform: scale(1.2);
+        }
+        
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover { transform: scale(1.05); }
+        .logo span { color: var(--accent-color); }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active { color: var(--accent-color); }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        
+        /* LinkedIn button in navbar */
+        .nav-linkedin-btn {
+            background: var(--linkedin-blue);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 119, 181, 0.3);
+        }
+        
+        .nav-linkedin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.5);
+            background: #006399;
+        }
+        
+        .nav-linkedin-btn i {
+            font-size: 1.1rem;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu-btn:hover { color: var(--accent-color); }
+        
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-content {
+            width: 100%;
+        }
+        
+        /* ===== HERO ===== */
+        .hero {
+            background: radial-gradient(circle at 30% 50%, rgba(77, 171, 247, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-statement {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff 0%, #4dabf7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-intro {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* Photo Section - Add after .hero-intro styles */
+        .photo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 80px;
+            flex-wrap: wrap;
+        }
+        
+        .photo-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+        
+        .photo-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid var(--accent-color);
+            box-shadow: 
+                0 20px 60px rgba(77, 171, 247, 0.3),
+                0 0 0 12px rgba(77, 171, 247, 0.1);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .photo-frame:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 30px 80px rgba(77, 171, 247, 0.4),
+                0 0 0 12px rgba(77, 171, 247, 0.15);
+        }
+        
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(77, 171, 247, 0.1) 0%, transparent 50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-upload-controls {
+            text-align: center;
+            max-width: 400px;
+        }
+        
+        .photo-upload-controls h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .photo-upload-controls p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+        
+        .upload-btn-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .upload-btn-wrapper input[type=file] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .upload-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            background: var(--bg-tertiary);
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            color: var(--accent-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-label:hover {
+            background: rgba(77, 171, 247, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .photo-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+        }
+        
+        .photo-info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .photo-info-item i {
+            color: var(--accent-color);
+        }
+        
+        /* Add to mobile responsive section */
+        @media (max-width: 768px) {
+            .photo-section {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .photo-container {
+                width: 280px;
+                height: 280px;
+            }
+        }
+        
+        /* ===== LINKEDIN CTA BANNER ===== */
+        .linkedin-banner {
+            background: linear-gradient(135deg, var(--linkedin-blue) 0%, #005582 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 30px rgba(0, 119, 181, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .linkedin-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 119, 181, 0.4);
+        }
+        
+        .linkedin-banner-content {
+            flex: 1;
+        }
+        
+        .linkedin-banner-content h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .linkedin-banner-content h3 i {
+            font-size: 1.8rem;
+        }
+        
+        .linkedin-banner-content p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .linkedin-banner-btn {
+            background: white;
+            color: var(--linkedin-blue);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .linkedin-banner-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ===== BUTTONS ===== */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+            color: #0a0a0a;
+            box-shadow: 0 4px 15px rgba(77, 171, 247, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(77, 171, 247, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(77, 171, 247, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== CARDS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+        
+        .card:hover::before { transform: scaleX(1); }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.7;
+        }
+        
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: calc(50% + 40px);
+        }
+        
+        .timeline-item:nth-child(even) {
+            padding-left: 0;
+            padding-right: calc(50% + 40px);
+            text-align: right;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 20px rgba(77, 171, 247, 0.5);
+        }
+        
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-content p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+        }
+        
+        .timeline-content strong {
+            color: var(--accent-color);
+        }
+        
+        /* ===== SKILLS ===== */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .skill-tag {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+        
+        .skill-tag:hover {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== STATS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            background: var(--bg-secondary);
+            padding: 40px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== PROJECTS ===== */
+        .project-card {
+            overflow: hidden;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        
+        .testimonial-stars {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .testimonial-author strong {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author span {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        
+        /* ===== CONTACT FORM ===== */
+        .contact-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        #formMessage {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        #formMessage.success {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+            border: 1px solid #4caf50;
+            display: block;
+        }
+        
+        #formMessage.error {
+            background: rgba(244, 67, 54, 0.1);
+            color: #f44336;
+            border: 1px solid #f44336;
+            display: block;
+        }
+        
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(77, 171, 247, 0.3);
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(77, 171, 247, 0.4);
+        }
+        
+        /* ===== CONTACT ===== */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover {
+            border-color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-size: 1.3rem;
+        }
+        
+        .contact-details h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+        }
+        
+        .contact-details a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-details a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 50px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover { color: var(--accent-color); }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            transform: translateY(-4px);
+        }
+        
+        .social-link.linkedin:hover {
+            background: var(--linkedin-blue);
+        }
+        
+        .copyright {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            text-align: center;
+            width: 100%;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .linkedin-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .linkedin-banner-content h3 {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                border-top: 1px solid var(--border-color);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+            
+            .nav-links.active { display: flex; }
+            
+            .nav-linkedin-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .section { padding: 60px 0; min-height: auto; }
+            
+            .timeline::before { left: 20px; }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-marker {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+            
+            .btn-group { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .floating-linkedin {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .linkedin-btn {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .scroll-to-top {
+                bottom: 95px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="index.html" class="logo">Gerald<span>.</span></a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-        <i class="fas fa-bars"></i>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#experience" class="nav-link">Experience</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
+    <!-- Floating LinkedIn Button -->
+    <div class="floating-linkedin">
+        <span class="linkedin-tooltip">Connect on LinkedIn!</span>
+        <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="linkedin-btn" target="_blank" rel="noopener noreferrer" title="Connect with me on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
     </div>
-  </nav>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="hero section">
-      <div class="container">
-        <div class="hero-content fade-in">
-          <span class="hero-greeting">Hi, I'm</span>
-          <h1 class="hero-title">Gerald Glenn Galero</h1>
-          <p class="hero-subtitle">IT Student & Aspiring Cybersecurity Professional</p>
-          <p class="hero-description">Building secure, human‑centered technology. Passionate about solving real‑world problems with code and curiosity.</p>
-          <div class="btn-group">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#contact" class="btn btn-secondary">Contact Me</a>
-          </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">Gerald Glenn Galero<span>.</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#journey" class="nav-link">Journey</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
         </div>
-      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="section hero" id="home">
+        <div class="container">
+            <div class="section-content fade-in">
+                <h1 class="hero-statement">
+                    Computer-literate, <br>
+                    productivity-focused IT student, <br>
+                    building systems with intention.
+                </h1>
+                
+                <p class="hero-intro">
+                    I'm an IT professional focused on programming, innovative solutions, and creating technology that empowers rather than complicates. Through continuous learning and mindful creation, I explore the intersection of security, usability, and human-centered design.
+                </p>
+                
+                <div class="btn-group">
+                    <a href="#about" class="btn btn-primary">Discover my story</a>
+                    <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                </div>
+
+                <div class="photo-section">
+                    <div class="photo-container">
+                        <div class="photo-frame">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Gerald Glenn Galero" 
+                                 id="profilePhoto">
+                        </div>
+                    </div>
+                    
+                    <div class="photo-upload-controls">
+                        <h3><i class="fas fa-camera"></i> Your Professional Photo</h3>
+                        <p>Upload your photo to personalize your portfolio</p>
+                        
+                        <div class="upload-btn-wrapper">
+                            <label class="upload-label">
+                                <i class="fas fa-upload"></i>
+                                <span>Choose Photo</span>
+                            </label>
+                            <input type="file" id="photoUpload" accept="image/*">
+                        </div>
+                        
+                        <div class="photo-info">
+                            <div class="photo-info-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Recommended: Square format (1:1 ratio)</span>
+                            </div>
+                            <div class="photo-info-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Max size: 5MB</span>
+                            </div>
+                            <div class="photo-info-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Formats: JPG, PNG, WebP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- LinkedIn CTA Banner -->
+                <div class="linkedin-banner">
+                    <div class="linkedin-banner-content">
+                        <h3>
+                            <i class="fab fa-linkedin"></i>
+                            Let's Connect Professionally
+                        </h3>
+                        <p>View my full professional profile and connect with me on LinkedIn</p>
+                    </div>
+                    <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="linkedin-banner-btn" target="_blank" rel="noopener noreferrer">
+                        View LinkedIn Profile
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>About Me</h2>
-          <p>IT student at Polytechnic University of the Philippines, focused on cybersecurity and creating technology that empowers.</p>
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-content">
+                <div class="section-header fade-in">
+                    <h2>About Me</h2>
+                    <p>Aspiring IT professional with a passion for technology, and creating innovative solutions.</p>
+                </div>
+                
+                <div class="grid">
+                    <div class="card fade-in delay-1">
+                        <i class="fas fa-user-graduate card-icon"></i>
+                        <h3>Education</h3>
+                        <p>Bachelor of Science in Information Technology at Polytechnic University of the Philippines - San Juan Campus. Currently developing foundational knowledge in systems, networks, and cybersecurity.</p>
+                    </div>
+                    
+                    <div class="card fade-in delay-2">
+                        <i class="fas fa-briefcase card-icon"></i>
+                        <h3>Experience</h3>
+                        <p>Customer Support at Hubby eSIM, providing technical support and troubleshooting. Previously worked as Service Crew at McDonald's, developing teamwork and customer service skills.</p>
+                    </div>
+                    
+                    <div class="card fade-in delay-3">
+                        <i class="fas fa-heart card-icon"></i>
+                        <h3>Interests</h3>
+                        <p>Customer support, playing badminton, riding motorcycles, exploring new technologies, and continuous learning in the ever-evolving tech landscape.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-          <div class="card fade-in">
-            <i class="fas fa-graduation-cap card-icon"></i>
-            <h3>Education</h3>
-            <p>BS Information Technology at PUP – San Juan. Developing foundational knowledge in systems, networks, and security.</p>
-          </div>
-          <div class="card fade-in">
-            <i class="fas fa-briefcase card-icon"></i>
-            <h3>Experience</h3>
-            <p>Customer Support at HUBBY eSIM, Service Crew at McDonald's. Strong problem‑solving and teamwork skills.</p>
-          </div>
-          <div class="card fade-in">
-            <i class="fas fa-heart card-icon"></i>
-            <h3>Interests</h3>
-            <p>Badminton, motorcycles, video games, and continuous learning in cybersecurity.</p>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>Skills & Tools</h2>
-          <p>Core competencies I bring to the table.</p>
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-content">
+                <div class="section-header fade-in">
+                    <h2>Skills & Expertise</h2>
+                    <p>Core competencies and continuous learning focus areas</p>
+                </div>
+                
+                <div class="grid">
+                    <div class="card fade-in delay-1">
+                        <i class="fas fa-shield-alt card-icon"></i>
+                        <h3>Computer Literacy</h3>
+                        <p>Strong foundation in computer literacy and everyday digital skills, enabling efficient and confident use of common productivity tools.</p>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Microsoft Word, Excel, PowerPoint</span>
+                            <span class="skill-tag">Canva</span>
+                            <span class="skill-tag">Basic Computer Skills</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in delay-2">
+                        <i class="fas fa-code card-icon"></i>
+                        <h3>Technical Skills</h3>
+                        <p>Creating elegant solutions to complex technical challenges with an emphasis on clarity.</p>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Technical Support</span>
+                            <span class="skill-tag">Systems Analysis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in delay-3">
+                        <i class="fas fa-users card-icon"></i>
+                        <h3>Soft Skills</h3>
+                        <p>Strong teamwork and communication skills developed through customer-facing roles.</p>
+                        <div class="skills-grid">
+                            <span class="skill-tag">Communication</span>
+                            <span class="skill-tag">Teamwork</span>
+                            <span class="skill-tag">Fast Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-          <div class="card fade-in">
-            <i class="fas fa-shield-alt card-icon"></i>
-            <h3>Technical</h3>
-            <div class="skills-grid">
-              <span class="skill-tag">Computer Literacy</span>
-              <span class="skill-tag">Technical Support</span>
-              <span class="skill-tag">Problem Solving</span>
-              <span class="skill-tag">Systems Analysis</span>
-            </div>
-          </div>
-          <div class="card fade-in">
-            <i class="fas fa-tools card-icon"></i>
-            <h3>Tools</h3>
-            <div class="skills-grid">
-              <span class="skill-tag">Microsoft Office</span>
-              <span class="skill-tag">Canva</span>
-              <span class="skill-tag">Basic Networking</span>
-            </div>
-          </div>
-          <div class="card fade-in">
-            <i class="fas fa-language card-icon"></i>
-            <h3>Languages</h3>
-            <div class="skills-grid">
-              <span class="skill-tag">Filipino (Fluent)</span>
-              <span class="skill-tag">English (Intermediate)</span>
-              <span class="skill-tag">German (Basics)</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Experience Section (Timeline) -->
-    <section id="experience" class="section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>Experience & Education</h2>
-          <p>My professional journey so far.</p>
+    <!-- Journey Section -->
+    <section class="section" id="journey">
+        <div class="container">
+            <div class="section-content">
+                <div class="section-header fade-in">
+                    <h2>Professional Journey</h2>
+                    <p>A timeline of learning, growth, and key milestones</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-date">Current</div>
+                        <div class="timeline-content">
+                            <h3>Customer Support</h3>
+                            <p><strong>HUBBY eSIM</strong> | Amsterdam, Noord Holland</p>
+                            <p>Providing technical support and assistance to customers, troubleshooting eSIM connectivity issues, and managing customer inquiries.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item fade-in delay-1">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-date">2023 - 2024</div>
+                        <div class="timeline-content">
+                            <h3>Service Crew</h3>
+                            <p><strong>McDonald's P. Guevarra</strong></p>
+                            <p>Developed teamwork, efficiency, and customer service skills in a fast-paced environment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item fade-in delay-2">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-date">Current</div>
+                        <div class="timeline-content">
+                            <h3>BS Information Technology</h3>
+                            <p><strong>Polytechnic University of the Philippines</strong></p>
+                            <p>Developing foundational knowledge in systems, networks, programming, and cybersecurity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item fade-in delay-3">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-date">Senior High</div>
+                        <div class="timeline-content">
+                            <h3>General Academic Strand</h3>
+                            <p><strong>San Juan Academic Senior-High School</strong></p>
+                            <p>Explored diverse academic subjects while developing research and critical thinking skills.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="timeline">
-          <div class="timeline-item fade-in">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <span class="timeline-date">Current</span>
-              <h3>Customer Support</h3>
-              <p><strong>HUBBY eSIM</strong> – Remote</p>
-              <p>Provide technical support, troubleshoot eSIM issues, and assist customers with connectivity.</p>
-            </div>
-          </div>
-          <div class="timeline-item fade-in">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <span class="timeline-date">2023–2024</span>
-              <h3>Service Crew</h3>
-              <p><strong>McDonald's P. Guevarra</strong></p>
-              <p>Developed teamwork, efficiency, and customer service in a fast‑paced environment.</p>
-            </div>
-          </div>
-          <div class="timeline-item fade-in">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <span class="timeline-date">Current</span>
-              <h3>BS Information Technology</h3>
-              <p><strong>Polytechnic University of the Philippines – San Juan</strong></p>
-              <p>Focus on cybersecurity, networks, and systems. Expected graduation: 2026.</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>Featured Projects</h2>
-          <p>What I've been working on.</p>
+    <!-- Projects/Portfolio Section -->
+    <section class="section" id="projects" style="background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);">
+        <div class="container">
+            <div class="section-content">
+                <div class="section-header fade-in">
+                    <h2>Projects & Achievements</h2>
+                    <p>Showcasing my work and accomplishments in technology</p>
+                </div>
+                
+                <div class="grid">
+                    <div class="card project-card fade-in delay-1">
+                        <div class="project-image" style="width: 100%; height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shield-alt" style="font-size: 4rem; color: rgba(255,255,255,0.9);"></i>
+                        </div>
+                        <h3>Computer Literacy & Productivity Skills</h3>
+                        <p>Applying computer literacy skills using Microsoft Office tools and Canva for documentation, presentations, data organization, and visual content creation.</p>
+                        <div class="project-tags">
+                            <span class="skill-tag">Microsoft Office, Excel, Word</span>
+                            <span class="skill-tag">Canva</span>
+                            <span class="skill-tag">Productivity</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card project-card fade-in delay-2">
+                        <div class="project-image" style="width: 100%; height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-headset" style="font-size: 4rem; color: rgba(255,255,255,0.9);"></i>
+                        </div>
+                        <h3>Technical Support Excellence</h3>
+                        <p>Successfully resolved 500+ customer technical issues with 95% satisfaction rate at HUBBY eSIM.</p>
+                        <div class="project-tags">
+                            <span class="skill-tag">Support</span>
+                            <span class="skill-tag">Customer Service</span>
+                            <span class="skill-tag">Problem Solving</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card project-card fade-in delay-3">
+                        <div class="project-image" style="width: 100%; height: 200px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-certificate" style="font-size: 4rem; color: rgba(255,255,255,0.9);"></i>
+                        </div>
+                        <h3>Continuous Learning</h3>
+                        <p>Actively pursuing certifications in cybersecurity and networking to enhance professional expertise.</p>
+                        <div class="project-tags">
+                            <span class="skill-tag">Certifications</span>
+                            <span class="skill-tag">Training</span>
+                            <span class="skill-tag">Growth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="grid">
-          <div class="card fade-in">
-            <div style="height: 160px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 8px; margin-bottom: var(--space-sm); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-shield-alt" style="font-size: 3rem; color: white;"></i>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section" id="stats" style="padding: 60px 0;">
+        <div class="container">
+            <div class="stats-grid fade-in">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Issues Resolved</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="95">0</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="3">0</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Learning Hours</div>
+                </div>
             </div>
-            <h3>Security Awareness Tool</h3>
-            <p>A web app that teaches basic cybersecurity concepts through interactive quizzes. Built with HTML, CSS, JavaScript.</p>
-            <div class="skills-grid" style="margin-top: var(--space-sm);">
-              <span class="skill-tag">HTML/CSS</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">UX Design</span>
-            </div>
-          </div>
-          <div class="card fade-in">
-            <div style="height: 160px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 8px; margin-bottom: var(--space-sm); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-phone-alt" style="font-size: 3rem; color: white;"></i>
-            </div>
-            <h3>eSIM Troubleshooting Guide</h3>
-            <p>Created a knowledge base for HUBBY eSIM support, reducing ticket resolution time by 20%.</p>
-            <div class="skills-grid" style="margin-top: var(--space-sm);">
-              <span class="skill-tag">Technical Writing</span>
-              <span class="skill-tag">Customer Support</span>
-            </div>
-          </div>
-          <div class="card fade-in">
-            <div style="height: 160px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 8px; margin-bottom: var(--space-sm); display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-robot" style="font-size: 3rem; color: white;"></i>
-            </div>
-            <h3>Portfolio Website (This!)</h3>
-            <p>Designed and developed a responsive personal portfolio to showcase my skills and projects.</p>
-            <div class="skills-grid" style="margin-top: var(--space-sm);">
-              <span class="skill-tag">HTML/CSS</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">Responsive Design</span>
-            </div>
-          </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials" style="background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);">
+        <div class="container">
+            <div class="section-content">
+                <div class="section-header fade-in">
+                    <h2>What People Say</h2>
+                    <p>Feedbacks</p>
+                </div>
+                
+                <div class="testimonials-container">
+                    <div class="testimonial-card fade-in delay-1">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Gerald demonstrates strong problem-solving skills and a genuine passion for learning computer applications and digital tools."</p>
+                        <div class="testimonial-author">
+                            <strong>Vin Cyril Vasquez</strong>
+                            <span>BSIT Student, PUPSJ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card fade-in delay-2">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Always reliable and professional. Gerald handles customer issues with patience and technical expertise that exceeds expectations."</p>
+                        <div class="testimonial-author">
+                            <strong>Nina Pauline Acasio</strong>
+                            <span>Customer Support Head, Hubby eSIM</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card fade-in delay-3">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"A great team player who brings positive energy and technical knowledge to every project. Looking forward to seeing his career grow!"</p>
+                        <div class="testimonial-author">
+                            <strong>Tamara Geronimo</strong>
+                            <span>BSIT Student, PUPSJ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>Get In Touch</h2>
-          <p>I'm open to opportunities, collaborations, and conversations.</p>
-        </div>
-        <div class="grid">
-          <!-- Contact Info -->
-          <div class="card fade-in">
-            <h3>Contact Information</h3>
-            <div style="display: flex; flex-direction: column; gap: var(--space-sm); margin-top: var(--space-md);">
-              <div style="display: flex; align-items: center; gap: var(--space-sm);">
-                <div style="width: 40px; height: 40px; background: var(--bg-tertiary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                  <i class="fas fa-envelope" style="color: var(--accent);"></i>
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-content">
+                <div class="section-header fade-in">
+                    <h2>Get In Touch</h2>
+                    <p>I'm open to discussions about technology, security, and potential opportunities</p>
                 </div>
-                <div>
-                  <h4 style="margin-bottom: 0.25rem;">Email</h4>
-                  <a href="mailto:geraldglenngalero3@gmail.com" style="color: var(--text-secondary); text-decoration: none;">geraldglenngalero3@gmail.com</a>
+                
+                <div class="grid">
+                    <div class="card fade-in delay-1">
+                        <h3>Contact Information</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Email</h4>
+                                    <a href="mailto:geraldglenngalero3@gmail.com">geraldglenngalero3@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Phone</h4>
+                                    <span>09927538466</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Location</h4>
+                                    <span>San Juan City, Metro Manila</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item" style="border: 2px solid var(--linkedin-blue); background: rgba(0, 119, 181, 0.05);">
+                                <div class="contact-icon" style="background: var(--linkedin-blue); color: white;">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h4 style="color: var(--linkedin-blue);">LinkedIn Profile</h4>
+                                    <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" target="_blank" rel="noopener noreferrer" style="color: var(--linkedin-blue); font-weight: 600;">gerald-glenn-galero</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in delay-2">
+                        <h3>Send a Message</h3>
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                        <div id="formMessage"></div>
+                        <div class="social-links" style="justify-content: center; margin-top: 30px;">
+                            <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" class="social-link linkedin" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="mailto:geraldglenngalero3@gmail.com" class="social-link" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://github.com" class="social-link" target="_blank" rel="noopener noreferrer" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-sm);">
-                <div style="width: 40px; height: 40px; background: var(--bg-tertiary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                  <i class="fas fa-phone" style="color: var(--accent);"></i>
-                </div>
-                <div>
-                  <h4 style="margin-bottom: 0.25rem;">Phone</h4>
-                  <span style="color: var(--text-secondary);">0992 753 8466</span>
-                </div>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-sm);">
-                <div style="width: 40px; height: 40px; background: var(--bg-tertiary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                  <i class="fas fa-map-marker-alt" style="color: var(--accent);"></i>
-                </div>
-                <div>
-                  <h4 style="margin-bottom: 0.25rem;">Location</h4>
-                  <span style="color: var(--text-secondary);">San Juan City, Metro Manila</span>
-                </div>
-              </div>
-              <div style="display: flex; align-items: center; gap: var(--space-sm);">
-                <div style="width: 40px; height: 40px; background: var(--bg-tertiary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                  <i class="fab fa-linkedin" style="color: var(--accent);"></i>
-                </div>
-                <div>
-                  <h4 style="margin-bottom: 0.25rem;">LinkedIn</h4>
-                  <a href="https://www.linkedin.com/in/gerald-glenn-galero-736724367" target="_blank" style="color: var(--text-secondary); text-decoration: none;">gerald-glenn-galero</a>
-                </div>
-              </div>
             </div>
-          </div>
-
-          <!-- Contact Form -->
-          <div class="card fade-in">
-            <h3>Send a Message</h3>
-            <form id="contactForm" class="contact-form">
-              <div class="form-group">
-                <input type="text" id="name" class="form-input" placeholder="Your Name" required>
-              </div>
-              <div class="form-group">
-                <input type="email" id="email" class="form-input" placeholder="Your Email" required>
-              </div>
-              <div class="form-group">
-                <textarea id="message" class="form-textarea" placeholder="Your Message" required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-              <div id="formMessage"></div>
-            </form>
-          </div>
         </div>
-      </div>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <a href="index.html" class="logo">Gerald<span>.</span></a>
-        <ul class="footer-links">
-          <li><a href="#home" class="footer-link">Home</a></li>
-          <li><a href="#about" class="footer-link">About</a></li>
-          <li><a href="#skills" class="footer-link">Skills</a></li>
-          <li><a href="#experience" class="footer-link">Experience</a></li>
-          <li><a href="#projects" class="footer-link">Projects</a></li>
-          <li><a href="#contact" class="footer-link">Contact</a></li>
-        </ul>
-        <p class="copyright">© <span id="currentYear"></span> Gerald Glenn Galero. All thoughts my own.</p>
-      </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#home" class="logo">Gerald Glenn Galero<span>.</span></a>
+                    <p style="color: var(--text-secondary); margin-top: 10px; font-size: 0.9rem;">IT Professional focused on technical, productivity skills & computer literacy</p>
+                </div>
+                
+                <ul class="footer-links">
+                    <li><a href="#home" class="footer-link">Home</a></li>
+                    <li><a href="#about" class="footer-link">About</a></li>
+                    <li><a href="#skills" class="footer-link">Skills</a></li>
+                    <li><a href="#projects" class="footer-link">Projects</a></li>
+                    <li><a href="#journey" class="footer-link">Journey</a></li>
+                    <li><a href="#contact" class="footer-link">Contact</a></li>
+                </ul>
+                
+                <p class="copyright">
+                    © <span id="currentYear"></span> Gerald Glenn Galero. All thoughts my own.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
     </div>
-  </footer>
 
-  <script src="main.js"></script>
+    <script>
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Photo upload functionality - Add after 'Set current year' code
+        const photoUpload = document.getElementById('photoUpload');
+        const profilePhoto = document.getElementById('profilePhoto');
+        
+        photoUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Validate file size (5MB max)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB');
+                    return;
+                }
+                
+                // Validate file type
+                if (!file.type.match('image.*')) {
+                    alert('Please select an image file');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    profilePhoto.src = event.target.result;
+                    // Save to localStorage
+                    localStorage.setItem('profilePhoto', event.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Load saved photo from localStorage
+        window.addEventListener('load', function() {
+            const savedPhoto = localStorage.getItem('profilePhoto');
+            if (savedPhoto) {
+                profilePhoto.src = savedPhoto;
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link, .nav-linkedin-btn').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Active navigation on scroll
+        const sections = document.querySelectorAll('.section');
+        const navLinksAll = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinksAll.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Animated counters for statistics
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target + (target === 95 ? '%' : '+');
+                    }
+                };
+                updateCounter();
+            });
+        };
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Trigger counter animation when stats section is visible
+                    if (entry.target.classList.contains('stats-grid')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            observer.observe(el);
+        });
+        
+        // Observe stats grid
+        const statsGrid = document.querySelector('.stats-grid');
+        if (statsGrid) observer.observe(statsGrid);
+        
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                formMessage.className = 'error';
+                formMessage.textContent = 'Please fill in all fields.';
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                formMessage.className = 'error';
+                formMessage.textContent = 'Please enter a valid email address.';
+                return;
+            }
+            
+            // Simulate form submission
+            formMessage.className = 'success';
+            formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+            contactForm.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        });
+        
+        // Typing effect for hero text (optional enhancement)
+        const heroText = document.querySelector('.hero-statement');
+        if (heroText) {
+            heroText.style.opacity = '1';
+        }
+        
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
 </body>
 </html>
