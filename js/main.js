@@ -1,48 +1,56 @@
 /**
- * Main JavaScript – navigation, animations, shared functionality
+ * Main JavaScript for the personal website
+ * Includes navigation, animations, and shared functionality
  */
 
-// DOM elements
+// DOM Elements
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navLinks = document.getElementById('navLinks');
 const currentYearSpan = document.getElementById('currentYear');
 const fadeElements = document.querySelectorAll('.fade-in');
+const staggerElements = document.querySelectorAll('.stagger-delay');
 
-// Initialize
+// Initialize the website
 function init() {
-  setCurrentYear();
-  initMobileMenu();
-  initScrollAnimations();
-  initSmoothScrolling();
-  setActiveNavLink();
-  initContactForm();
-}
-
-// Set current year in footer
-function setCurrentYear() {
+  // Set current year in footer
   if (currentYearSpan) {
     currentYearSpan.textContent = new Date().getFullYear();
   }
+  
+  // Initialize mobile menu
+  initMobileMenu();
+  
+  // Initialize scroll animations
+  initScrollAnimations();
+  
+  // Initialize smooth scrolling for anchor links
+  initSmoothScrolling();
+  
+  // Set active navigation link based on current page
+  setActiveNavLink();
 }
 
-// Mobile menu toggle
+// Mobile menu functionality
 function initMobileMenu() {
   if (!mobileMenuBtn || !navLinks) return;
-
+  
   mobileMenuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
-    mobileMenuBtn.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+    mobileMenuBtn.setAttribute(
+      'aria-expanded', 
+      navLinks.classList.contains('active')
+    );
   });
-
-  // Close when clicking outside
+  
+  // Close mobile menu when clicking outside
   document.addEventListener('click', (e) => {
     if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
       navLinks.classList.remove('active');
       mobileMenuBtn.setAttribute('aria-expanded', 'false');
     }
   });
-
-  // Close on resize above mobile
+  
+  // Close mobile menu when window is resized
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
       navLinks.classList.remove('active');
@@ -51,18 +59,35 @@ function initMobileMenu() {
   });
 }
 
-// Scroll animations (Intersection Observer)
+// Scroll animations using IntersectionObserver
 function initScrollAnimations() {
+  // Create IntersectionObserver with a threshold
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        
+        // Stop observing after animation is triggered
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-
-  fadeElements.forEach(el => observer.observe(el));
+  }, observerOptions);
+  
+  // Observe all fade-in elements
+  fadeElements.forEach(element => {
+    observer.observe(element);
+  });
+  
+  // Observe all stagger-delay elements
+  staggerElements.forEach(element => {
+    observer.observe(element);
+  });
 }
 
 // Smooth scrolling for anchor links
@@ -70,16 +95,30 @@ function initSmoothScrolling() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
+      
+      // Skip if it's just a hash
       if (href === '#') return;
+      
+      // Check if it's an internal link
       if (href.startsWith('#') && document.querySelector(href)) {
         e.preventDefault();
-        const target = document.querySelector(href);
-        const headerHeight = document.querySelector('.navbar')?.offsetHeight || 80;
-        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        window.scrollTo({ top: targetPos, behavior: 'smooth' });
-
-        // Close mobile menu if open
-        if (navLinks) navLinks.classList.remove('active');
+        
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          // Close mobile menu if open
+          if (navLinks) {
+            navLinks.classList.remove('active');
+          }
+          
+          // Calculate scroll position with offset for fixed header
+          const headerHeight = document.querySelector('.navbar')?.offsetHeight || 80;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
       }
     });
   });
@@ -88,52 +127,106 @@ function initSmoothScrolling() {
 // Set active navigation link based on current page
 function setActiveNavLink() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-link').forEach(link => {
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  navLinks.forEach(link => {
+    const linkHref = link.getAttribute('href');
+    
+    // Remove active class from all links
     link.classList.remove('active');
-    if (link.getAttribute('href') === currentPage) {
+    
+    // Check if this link corresponds to the current page
+    if (
+      (currentPage === 'index.html' && linkHref === 'index.html') ||
+      (currentPage === 'about.html' && linkHref === 'about.html') ||
+      (currentPage === 'agenda.html' && linkHref === 'agenda.html') ||
+      (currentPage === 'journey.html' && linkHref === 'journey.html') ||
+      (currentPage === 'contact.html' && linkHref === 'contact.html')
+    ) {
       link.classList.add('active');
     }
   });
 }
 
-// Contact form handling (on contact page)
+// Contact form handling
 function initContactForm() {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
+  const contactForm = document.getElementById('contactForm');
+  
+  if (!contactForm) return;
+  
+  contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    const name = document.getElementById('name')?.value.trim();
-    const email = document.getElementById('email')?.value.trim();
-    const message = document.getElementById('message')?.value.trim();
-    const msgDiv = document.getElementById('formMessage');
-
+    
+    // Get form data
+    const formData = new FormData(this);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    
+    // Basic validation
     if (!name || !email || !message) {
-      showFormMessage('Please fill in all fields.', 'error');
+      showFormMessage('Please fill in all required fields.', 'error');
       return;
     }
+    
+    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       showFormMessage('Please enter a valid email address.', 'error');
       return;
     }
-
-    // Simulate success
-    console.log({ name, email, message });
-    showFormMessage('Thank you for your message! I\'ll get back to you soon.', 'success');
-    form.reset();
+    
+    // In a real application, you would send the data to a server here
+    // For this demo, we'll simulate a successful submission
+    console.log('Form submitted:', { name, email, message });
+    
+    // Show success message
+    showFormMessage('Thank you for your message. I\'ll get back to you soon!', 'success');
+    
+    // Reset form
+    this.reset();
   });
 }
 
-function showFormMessage(text, type) {
-  const msgDiv = document.getElementById('formMessage');
-  msgDiv.textContent = text;
-  msgDiv.className = type;
+// Show form message
+function showFormMessage(message, type) {
+  // Remove existing message
+  const existingMessage = document.querySelector('.form-message');
+  if (existingMessage) {
+    existingMessage.remove();
+  }
+  
+  // Create message element
+  const messageElement = document.createElement('div');
+  messageElement.className = `form-message ${type}`;
+  messageElement.textContent = message;
+  messageElement.style.cssText = `
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background-color: ${type === 'success' ? 'rgba(76, 175, 80, 0.1)' : 'rgba(244, 67, 54, 0.1)'};
+    color: ${type === 'success' ? '#4caf50' : '#f44336'};
+    border: 1px solid ${type === 'success' ? '#4caf50' : '#f44336'};
+  `;
+  
+  // Insert after the form
+  const contactForm = document.getElementById('contactForm');
+  contactForm.appendChild(messageElement);
+  
+  // Remove message after 5 seconds
   setTimeout(() => {
-    msgDiv.textContent = '';
-    msgDiv.className = '';
+    if (messageElement.parentNode) {
+      messageElement.remove();
+    }
   }, 5000);
 }
 
-// Start everything when DOM is ready
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
+
+// Initialize contact form if on contact page
+document.addEventListener('DOMContentLoaded', initContactForm);
+
+// Export functions for use in other modules (if needed)
+export { init, initMobileMenu, initScrollAnimations, initSmoothScrolling };
